@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+
+{%block title_block%}
+
+<title>Todo list</title>
+
+{%endblock%}
+
+
+{%block main_block%}
+
+
+
+
+<h1 class="text-center fw-bolder mt-5">Todo Tracker</h1>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h3 class="fw-bold">History</h3>
+
+            {{request.user}}
+
+
+            {%for t in data%}
+
+           <div class="card mb-2">
+            <div class="card-body">
+               <div class="row">
+                <div class="col-2"></div>
+                <div class="col-6 d-flex justify-content-center">
+                    {{t.title}}
+                    {{t.status}}
+                </div>
+                <div class="col-4 d-flex justify-content-evenly">
+                        <a href="{%url 'todo-detail' t.id%}"><i class="fa-regular fa-eye fa-1x"></i></a>
+                        <a href="{%url 'todo-update' t.id%}"><i class="fa-solid fa-pen-to-square fa-1x" style="color: green;"></i></a>
+                        <a href="{%url 'todo-delete' t.id%}"><i class="fa-solid fa-trash fa-1x" style="color: rgb(160, 24, 24);"></i></a>
+                </div>
+               </div> 
+               
+            </div>
+          </div>
+           {%endfor%}
+              
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+{%endblock%}
